@@ -1,6 +1,7 @@
 const exrpess = require('express');
 const app = exrpess();
 const path = require('path');
+const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const Campground = require('./models/campground');
 const { title } = require('process');
@@ -14,6 +15,7 @@ db.once('open', () => {
   console.log('Database connected');
 });
 
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
